@@ -43,15 +43,19 @@ namespace AutoPeca
             this.label6 = new System.Windows.Forms.Label();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.lstVeiculos = new System.Windows.Forms.ListBox();
+            this.btnSelecionar = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnGravar
             // 
-            this.btnGravar.Location = new System.Drawing.Point(314, 208);
+            this.btnGravar.Location = new System.Drawing.Point(282, 208);
             this.btnGravar.Name = "btnGravar";
-            this.btnGravar.Size = new System.Drawing.Size(75, 23);
+            this.btnGravar.Size = new System.Drawing.Size(107, 23);
             this.btnGravar.TabIndex = 0;
-            this.btnGravar.Text = "Gravar";
+            this.btnGravar.Text = "Incluir Veículo";
             this.btnGravar.UseVisualStyleBackColor = true;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
@@ -155,7 +159,7 @@ namespace AutoPeca
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(233, 208);
+            this.btnLimpar.Location = new System.Drawing.Point(90, 208);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpar.TabIndex = 12;
@@ -167,16 +171,61 @@ namespace AutoPeca
             // 
             this.lstVeiculos.FormattingEnabled = true;
             this.lstVeiculos.ItemHeight = 15;
-            this.lstVeiculos.Location = new System.Drawing.Point(80, 251);
+            this.lstVeiculos.Location = new System.Drawing.Point(12, 273);
             this.lstVeiculos.Name = "lstVeiculos";
-            this.lstVeiculos.Size = new System.Drawing.Size(309, 154);
+            this.lstVeiculos.Size = new System.Drawing.Size(377, 79);
             this.lstVeiculos.TabIndex = 13;
+            // 
+            // btnSelecionar
+            // 
+            this.btnSelecionar.Location = new System.Drawing.Point(314, 358);
+            this.btnSelecionar.Name = "btnSelecionar";
+            this.btnSelecionar.Size = new System.Drawing.Size(75, 23);
+            this.btnSelecionar.TabIndex = 14;
+            this.btnSelecionar.Text = "Selecionar";
+            this.btnSelecionar.UseVisualStyleBackColor = true;
+            this.btnSelecionar.Click += new System.EventHandler(this.btnSelecionar_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label7.Location = new System.Drawing.Point(124, 255);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(122, 15);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Listagem de Veículos";
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(171, 208);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(105, 23);
+            this.btnEditar.TabIndex = 16;
+            this.btnEditar.Text = "Editar Veículo";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Location = new System.Drawing.Point(233, 358);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluir.TabIndex = 17;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // FrmVeiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 443);
+            this.ClientSize = new System.Drawing.Size(400, 426);
+            this.Controls.Add(this.btnExcluir);
+            this.Controls.Add(this.btnEditar);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.btnSelecionar);
             this.Controls.Add(this.lstVeiculos);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.label6);
@@ -214,6 +263,10 @@ namespace AutoPeca
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.ListBox lstVeiculos;
+        private System.Windows.Forms.Button btnSelecionar;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnExcluir;
     }
 }
 

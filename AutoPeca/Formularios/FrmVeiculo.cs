@@ -13,11 +13,14 @@ namespace AutoPeca
     public partial class FrmVeiculo : Form
     {
         private VO.Veiculo vo;
+        private List<VO.Veiculo> lista;
 
         public FrmVeiculo()
         {
             InitializeComponent();
             vo = new VO.Veiculo();
+            lista = new List<VO.Veiculo>();
+            liberarEdicao(false);
         }
 
         private void interfaceToObject() {
@@ -35,30 +38,68 @@ namespace AutoPeca
             txtPotencia.Text = "";
             cmbFabricante.SelectedIndex = -1;
         }
-
         private void carregar()
         {
-
-            lstVeiculos.Items.Add(vo);
+            lstVeiculos.DataSource = null;
+            lstVeiculos.DataSource = lista;
+            lstVeiculos.SelectedIndex = -1;
+            lstVeiculos.ValueMember = "codigo";
+            lstVeiculos.DisplayMember = "modelo";
             lstVeiculos.Refresh();
 
         }
-
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             Limpar();
+            liberarEdicao(false);
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
             try {
+                vo = new VO.Veiculo();
                 interfaceToObject();
-                Limpar();
+                lista.Add(vo);
                 carregar();
+                Limpar();
             }
             catch(Exception ex){
                 MessageBox.Show(ex.Message,"Erro no Aplicativo");
             }
+        }
+
+        private void btnSelecionar_Click(object sender, EventArgs e)
+        {
+            vo = ((VO.Veiculo)lstVeiculos.Items[lstVeiculos.SelectedIndex]);
+            objecttoInterface();
+            liberarEdicao(true);
+        }
+
+        private void objecttoInterface()
+        {
+            txtAno.Text = vo.ano.ToString();
+            txtCodigo.Text = vo.codigo.ToString();
+            txtModelo.Text = vo.modelo.ToString();
+            txtPotencia.Text = vo.potencia.ToString();
+            cmbFabricante.SelectedItem = vo.fabricante.ToString();
+        }
+
+        private void liberarEdicao(bool habilita)
+        {
+            btnGravar.Enabled = !habilita;
+            btnEditar.Enabled = habilita;
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            interfaceToObject();
+            carregar();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            lista.RemoveAt(lstVeiculos.SelectedIndex);
+            carregar();
         }
     }
 }
