@@ -22,7 +22,7 @@ namespace AutoPeca
             lista = new List<VO.Veiculo>();
             liberarEdicao(false);
         }
-
+        
         private void interfaceToObject() {
             vo.ano = int.Parse(txtAno.Text);
             vo.codigo = int.Parse(txtAno.Text);

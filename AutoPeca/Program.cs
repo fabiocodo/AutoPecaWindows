@@ -17,7 +17,7 @@ namespace AutoPeca
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmVeiculo());
+            Application.Run(new Formularios.Principal());
         }
     }
 }
