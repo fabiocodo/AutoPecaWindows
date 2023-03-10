@@ -18,17 +18,46 @@ namespace AutoPeca
         public FrmVeiculo()
         {
             InitializeComponent();
-            vo = new VO.Veiculo();
-            lista = new List<VO.Veiculo>();
+            InicializarVeiculos();
             liberarEdicao(false);
+            
+            carregar();
+            carregarFabricante();
         }
-        
+
+        private void carregarFabricante()
+        {
+            cmbFabricante.DataSource = null;
+            cmbFabricante.DataSource = DAO.DAO.listaFabricante;
+            cmbFabricante.ValueMember = "codigo";
+            cmbFabricante.DisplayMember = "nome";
+            cmbFabricante.Refresh();
+        }
+
+        private void InicializarVeiculos()
+        {
+            vo = new VO.Veiculo();
+            if (DAO.DAO.listaVeiculo == null)
+            {
+                DAO.DAO.listaVeiculo = new List<VO.Veiculo>();
+            }
+            lista = DAO.DAO.listaVeiculo;
+        }
+
         private void interfaceToObject() {
             vo.ano = int.Parse(txtAno.Text);
             vo.codigo = int.Parse(txtAno.Text);
             vo.modelo = txtModelo.Text;
             vo.potencia = txtPotencia.Text ;
             vo.fabricante = cmbFabricante.SelectedItem.ToString();
+        }
+        private void objecttoInterface()
+        {
+            txtAno.Text = vo.ano.ToString();
+            txtCodigo.Text = vo.codigo.ToString();
+            txtModelo.Text = vo.modelo.ToString();
+            txtPotencia.Text = vo.potencia.ToString();
+            cmbFabricante.SelectedItem = vo.fabricante.ToString();
         }
         private void Limpar()
         {
@@ -74,16 +103,7 @@ namespace AutoPeca
             objecttoInterface();
             liberarEdicao(true);
         }
-
-        private void objecttoInterface()
-        {
-            txtAno.Text = vo.ano.ToString();
-            txtCodigo.Text = vo.codigo.ToString();
-            txtModelo.Text = vo.modelo.ToString();
-            txtPotencia.Text = vo.potencia.ToString();
-            cmbFabricante.SelectedItem = vo.fabricante.ToString();
-        }
-
+      
         private void liberarEdicao(bool habilita)
         {
             btnGravar.Enabled = !habilita;

@@ -29,6 +29,7 @@ namespace AutoPeca
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnGravar = new System.Windows.Forms.Button();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtModelo = new System.Windows.Forms.TextBox();
@@ -47,6 +48,7 @@ namespace AutoPeca
             this.label7 = new System.Windows.Forms.Label();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
+            this.ToolTipText = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // btnGravar
@@ -54,7 +56,7 @@ namespace AutoPeca
             this.btnGravar.Location = new System.Drawing.Point(282, 208);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(107, 23);
-            this.btnGravar.TabIndex = 0;
+            this.btnGravar.TabIndex = 8;
             this.btnGravar.Text = "Incluir Veículo";
             this.btnGravar.UseVisualStyleBackColor = true;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
@@ -65,6 +67,7 @@ namespace AutoPeca
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(174, 23);
             this.txtCodigo.TabIndex = 1;
+            this.ToolTipText.SetToolTip(this.txtCodigo, "Codigo do Veículo");
             // 
             // txtModelo
             // 
@@ -105,7 +108,7 @@ namespace AutoPeca
             this.txtAno.Location = new System.Drawing.Point(80, 102);
             this.txtAno.Name = "txtAno";
             this.txtAno.Size = new System.Drawing.Size(315, 23);
-            this.txtAno.TabIndex = 5;
+            this.txtAno.TabIndex = 3;
             // 
             // label4
             // 
@@ -120,8 +123,9 @@ namespace AutoPeca
             // 
             this.txtPotencia.Location = new System.Drawing.Point(80, 161);
             this.txtPotencia.Name = "txtPotencia";
+            this.txtPotencia.ReadOnly = true;
             this.txtPotencia.Size = new System.Drawing.Size(315, 23);
-            this.txtPotencia.TabIndex = 7;
+            this.txtPotencia.TabIndex = 5;
             // 
             // cmbFabricante
             // 
@@ -135,7 +139,7 @@ namespace AutoPeca
             this.cmbFabricante.Location = new System.Drawing.Point(80, 132);
             this.cmbFabricante.Name = "cmbFabricante";
             this.cmbFabricante.Size = new System.Drawing.Size(315, 23);
-            this.cmbFabricante.TabIndex = 9;
+            this.cmbFabricante.TabIndex = 4;
             // 
             // label5
             // 
@@ -162,7 +166,7 @@ namespace AutoPeca
             this.btnLimpar.Location = new System.Drawing.Point(90, 208);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpar.TabIndex = 12;
+            this.btnLimpar.TabIndex = 6;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
@@ -175,13 +179,14 @@ namespace AutoPeca
             this.lstVeiculos.Name = "lstVeiculos";
             this.lstVeiculos.Size = new System.Drawing.Size(377, 79);
             this.lstVeiculos.TabIndex = 13;
+            this.lstVeiculos.TabStop = false;
             // 
             // btnSelecionar
             // 
             this.btnSelecionar.Location = new System.Drawing.Point(314, 358);
             this.btnSelecionar.Name = "btnSelecionar";
             this.btnSelecionar.Size = new System.Drawing.Size(75, 23);
-            this.btnSelecionar.TabIndex = 14;
+            this.btnSelecionar.TabIndex = 10;
             this.btnSelecionar.Text = "Selecionar";
             this.btnSelecionar.UseVisualStyleBackColor = true;
             this.btnSelecionar.Click += new System.EventHandler(this.btnSelecionar_Click);
@@ -202,7 +207,7 @@ namespace AutoPeca
             this.btnEditar.Location = new System.Drawing.Point(171, 208);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(105, 23);
-            this.btnEditar.TabIndex = 16;
+            this.btnEditar.TabIndex = 7;
             this.btnEditar.Text = "Editar Veículo";
             this.btnEditar.UseVisualStyleBackColor = true;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
@@ -212,7 +217,7 @@ namespace AutoPeca
             this.btnExcluir.Location = new System.Drawing.Point(233, 358);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 23);
-            this.btnExcluir.TabIndex = 17;
+            this.btnExcluir.TabIndex = 9;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
@@ -267,6 +272,7 @@ namespace AutoPeca
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.ToolTip ToolTipText;
     }
 }
 
