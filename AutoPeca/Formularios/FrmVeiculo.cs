@@ -14,17 +14,15 @@ namespace AutoPeca
     {
         private VO.Veiculo vo;
         private List<VO.Veiculo> lista;
-
+        private BE.VeiculoBE be;
         public FrmVeiculo()
         {
             InitializeComponent();
             InicializarVeiculos();
-            liberarEdicao(false);
-            
+            liberarEdicao(false);            
             carregar();
             carregarFabricante();
         }
-
         private void carregarFabricante()
         {
             cmbFabricante.DataSource = null;
@@ -37,11 +35,8 @@ namespace AutoPeca
         private void InicializarVeiculos()
         {
             vo = new VO.Veiculo();
-            if (DAO.DAO.listaVeiculo == null)
-            {
-                DAO.DAO.listaVeiculo = new List<VO.Veiculo>();
-            }
-            lista = DAO.DAO.listaVeiculo;
+            be = new BE.VeiculoBE();           
+            lista = be.listar();
         }
 
         private void interfaceToObject() {
@@ -50,6 +45,7 @@ namespace AutoPeca
             vo.modelo = txtModelo.Text;
             vo.potencia = txtPotencia.Text ;
             vo.fabricante = cmbFabricante.SelectedItem.ToString();
+            
         }
         private void objecttoInterface()
         {
