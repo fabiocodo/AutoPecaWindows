@@ -35,8 +35,6 @@ namespace AutoPeca
         private void InicializarVeiculos()
         {
             vo = new VO.Veiculo();
-            be = new BE.VeiculoBE();           
-            lista = be.listar();
         }
 
         private void interfaceToObject() {
@@ -65,8 +63,9 @@ namespace AutoPeca
         }
         private void carregar()
         {
+            be = new BE.VeiculoBE(this.vo);
             lstVeiculos.DataSource = null;
-            lstVeiculos.DataSource = lista;
+            lstVeiculos.DataSource = be.listar();
             lstVeiculos.SelectedIndex = -1;
             lstVeiculos.ValueMember = "codigo";
             lstVeiculos.DisplayMember = "modelo";
@@ -84,7 +83,8 @@ namespace AutoPeca
             try {
                 vo = new VO.Veiculo();
                 interfaceToObject();
-                lista.Add(vo);
+                be = new BE.VeiculoBE(this.vo);
+                be.incluir();
                 carregar();
                 Limpar();
             }
@@ -95,7 +95,8 @@ namespace AutoPeca
 
         private void btnSelecionar_Click(object sender, EventArgs e)
         {
-            vo = ((VO.Veiculo)lstVeiculos.Items[lstVeiculos.SelectedIndex]);
+            be = new BE.VeiculoBE(this.vo);
+            vo = be.carregar(lstVeiculos.SelectedIndex);
             objecttoInterface();
             liberarEdicao(true);
         }
@@ -109,12 +110,15 @@ namespace AutoPeca
         private void btnEditar_Click(object sender, EventArgs e)
         {
             interfaceToObject();
+            be = new BE.VeiculoBE(this.vo);
+            be.alterar();
             carregar();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            lista.RemoveAt(lstVeiculos.SelectedIndex);
+            be = new BE.VeiculoBE(this.vo);
+            be.remover(lstVeiculos.SelectedIndex);
             carregar();
         }
     }

@@ -5,26 +5,43 @@ namespace AutoPeca.BE
 {
     public class VeiculoBE : BaseBE
     {
+        private VO.Veiculo vo;
+        private DAO.VeiculoDAO dao;
+
+        public VeiculoBE(VO.Veiculo vo)        {         
+            this.vo = vo;        
+        }
+
         public void incluir()
         {
+            if(string.IsNullOrEmpty(this.vo.modelo))
+            {
+                throw new Exception("Modelo do veículo Obrigatorio");
+            }
 
+            dao = new DAO.VeiculoDAO(this.vo);
+            dao.incluir();
         }
         public void alterar()
         {
-
+            dao = new DAO.VeiculoDAO(this.vo);
+            dao.alterar();
         }
-        public VO.Veiculo carregar()
+        public VO.Veiculo carregar(int id)
         {
-            VO.Veiculo  vo = new VO.Veiculo();
-            return vo;
+            dao = new DAO.VeiculoDAO(this.vo);
+            return dao.carregar(id);
         }
+        public void remover(int id)
+        {
+            dao = new DAO.VeiculoDAO(this.vo);
+            dao.remover(id);
+        }
+
         public List<VO.Veiculo> listar()
         {
-            if (DAO.DAO.listaVeiculo == null)
-            {
-                DAO.DAO.listaVeiculo = new List<VO.Veiculo>();
-            }
-            return DAO.DAO.listaVeiculo;
+            dao = new DAO.VeiculoDAO(this.vo);
+            return dao.listar();
         }
     }
 }

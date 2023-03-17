@@ -1,30 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace AutoPeca.DAO
 {
-    public class VeiculoDAO
+    public class VeiculoDAO : BaseDAO
     {
-        public void incluir()
-        {
+        private VO.Veiculo vo;
+        public VeiculoDAO(VO.Veiculo vo) {
 
-        }
-        public void alterar()
-        {
-
-        }
-        public VO.Veiculo carregar()
-        {
-            VO.Veiculo vo = new VO.Veiculo();
-            return vo;
-        }
-        public List<VO.Veiculo> listar()
-        {
             if (DAO.listaVeiculo == null)
             {
                 DAO.listaVeiculo = new List<VO.Veiculo>();
             }
+            this.vo = vo;
+        }
+        public void incluir()
+        {
+            DAO.listaVeiculo.Add(vo);
+        }
+        public void alterar()
+        {
+            
+        }
+        public void remover(int id)
+        {
+            DAO.listaVeiculo.RemoveAt(id);
+        }
+       
+        public VO.Veiculo carregar(int id)
+        {
+            return DAO.listaVeiculo[id];
+        }
+        public List<VO.Veiculo> listar()
+        {           
             return DAO.listaVeiculo;
         }
     }
