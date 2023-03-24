@@ -39,19 +39,19 @@ namespace AutoPeca
 
         private void interfaceToObject() {
             vo.ano = int.Parse(txtAno.Text);
-            vo.codigo = int.Parse(txtAno.Text);
+            vo.codigo = int.Parse(txtCodigo.Text);
             vo.modelo = txtModelo.Text;
             vo.potencia = txtPotencia.Text ;
-            vo.fabricante = cmbFabricante.SelectedItem.ToString();
+            //vo.fabricante = cmbFabricante.SelectedItem.ToString();
             
         }
         private void objecttoInterface()
         {
             txtAno.Text = vo.ano.ToString();
             txtCodigo.Text = vo.codigo.ToString();
-            txtModelo.Text = vo.modelo.ToString();
+            txtModelo.Text =  vo.modelo.ToString();
             txtPotencia.Text = vo.potencia.ToString();
-            cmbFabricante.SelectedItem = vo.fabricante.ToString();
+            //cmbFabricante.SelectedItem = vo.fabricante.ToString();
         }
         private void Limpar()
         {
@@ -96,7 +96,7 @@ namespace AutoPeca
         private void btnSelecionar_Click(object sender, EventArgs e)
         {
             be = new BE.VeiculoBE(this.vo);
-            vo = be.carregar(lstVeiculos.SelectedIndex);
+            vo = be.carregar(int.Parse(lstVeiculos.SelectedValue.ToString())); 
             objecttoInterface();
             liberarEdicao(true);
         }
