@@ -13,7 +13,6 @@ namespace AutoPeca
     public partial class FrmVeiculo : Form
     {
         private VO.Veiculo vo;
-        private List<VO.Veiculo> lista;
         private BE.VeiculoBE be;
         public FrmVeiculo()
         {
@@ -25,8 +24,9 @@ namespace AutoPeca
         }
         private void carregarFabricante()
         {
+            BE.FabricanteBE fab = new BE.FabricanteBE(new VO.Fabricante());
             cmbFabricante.DataSource = null;
-            cmbFabricante.DataSource = DAO.DAO.listaFabricante;
+            cmbFabricante.DataSource = fab.listar();
             cmbFabricante.ValueMember = "codigo";
             cmbFabricante.DisplayMember = "nome";
             cmbFabricante.Refresh();

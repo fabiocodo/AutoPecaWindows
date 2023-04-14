@@ -10,6 +10,6 @@ namespace AutoPeca.VO
         public string modelo { get; set; }
         public string potencia { get; set; }
         public int ano { get; set; }
-        public string fabricante { get; set; } 
+        public Fabricante fabricante { get; set; } 
     }
 }

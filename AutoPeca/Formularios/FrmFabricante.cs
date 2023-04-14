@@ -13,7 +13,7 @@ namespace AutoPeca.Formularios
 
         private VO.Fabricante fab;
         private List<VO.Fabricante> lista;
-
+        private BE.FabricanteBE be;
         public FrmFabricante()
         {
             InitializeComponent();
@@ -60,8 +60,9 @@ namespace AutoPeca.Formularios
         }
         private void carregar()
         {
+            be = new BE.FabricanteBE(fab);
             lstfabricante.DataSource = null;
-            lstfabricante.DataSource = lista;
+            lstfabricante.DataSource = be.listar();
             lstfabricante.ValueMember = "codigo";
             lstfabricante.DisplayMember = "nome";
             lstfabricante.Refresh();
@@ -79,7 +80,8 @@ namespace AutoPeca.Formularios
             {
                 fab = new VO.Fabricante();
                 InteractToObject();
-                lista.Add(fab);
+                be = new BE.FabricanteBE(fab);
+                be.incluir();
                 limpar1();
                 carregar();
             }
