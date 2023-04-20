@@ -22,12 +22,12 @@ namespace AutoPeca.DAO
         {
             try
             {
-                string sql = "insert into tb_veiculo (NM_MODELO,VL_ANO,NM_MOTOR) " +
-                    "values (@Mod,@ano,@mot)";
+                string sql = "insert into tb_veiculo (NM_MODELO,VL_ANO,NM_MOTOR,ID_FABRICANTE) " +
+                    "values (@Mod,@ano,@mot,@fab)";
                 db.AddParameter("@Mod", vo.modelo, ParameterDirection.Input);
                 db.AddParameter("@ano", vo.ano, ParameterDirection.Input);
                 db.AddParameter("@mot", vo.potencia, ParameterDirection.Input);
-
+                db.AddParameter("@fab", vo.fabricante.codigo, ParameterDirection.Input);
                 db.Execute(sql, CommandType.Text);
             }
             catch (Exception ex)
@@ -72,7 +72,7 @@ namespace AutoPeca.DAO
         }
        
         public VO.Veiculo carregar(int id)        {
-            string sql = $"SELECT id,nm_modelo,vl_ano,nm_motor from tb_veiculo where id=@id";
+            string sql = $"SELECT id,nm_modelo,vl_ano,nm_motor ,ID_FABRICANTE from tb_veiculo where id=@id";
             db.AddParameter("@id", id, ParameterDirection.Input);
             try {
                 using (var dr = db.ExecuteReader(sql, CommandType.Text))
@@ -97,6 +97,10 @@ namespace AutoPeca.DAO
             vo.modelo = dr["nm_modelo"] != DBNull.Value ? dr["nm_modelo"].ToString() : "";
             vo.ano = dr["vl_ano"] != DBNull.Value ? int.Parse(dr["vl_ano"].ToString()) : 0;
             vo.potencia = dr["nm_motor"] != DBNull.Value ? dr["nm_motor"].ToString() : "";
+
+            vo.fabricante = new VO.Fabricante();
+            vo.fabricante.codigo = dr["id_fabricante"] != DBNull.Value ? int.Parse(dr["id_fabricante"].ToString()) : 0;
+           
             return vo;
         }
 

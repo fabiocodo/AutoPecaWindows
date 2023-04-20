@@ -42,8 +42,9 @@ namespace AutoPeca
             vo.codigo = int.Parse(txtCodigo.Text);
             vo.modelo = txtModelo.Text;
             vo.potencia = txtPotencia.Text ;
-            //vo.fabricante = cmbFabricante.SelectedItem.ToString();
-            
+            vo.fabricante = (VO.Fabricante) cmbFabricante.SelectedItem;
+          
+
         }
         private void objecttoInterface()
         {
@@ -51,7 +52,15 @@ namespace AutoPeca
             txtCodigo.Text = vo.codigo.ToString();
             txtModelo.Text =  vo.modelo.ToString();
             txtPotencia.Text = vo.potencia.ToString();
-            //cmbFabricante.SelectedItem = vo.fabricante.ToString();
+            int index = 0;
+            foreach (VO.Fabricante item in cmbFabricante.Items) {
+                if (item.codigo.Equals(vo.fabricante.codigo))
+                {
+                    cmbFabricante.SelectedIndex = index;
+                    return;
+                }
+                index ++;
+            }
         }
         private void Limpar()
         {
