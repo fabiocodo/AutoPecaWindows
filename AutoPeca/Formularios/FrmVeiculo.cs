@@ -127,7 +127,8 @@ namespace AutoPeca
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             be = new BE.VeiculoBE(this.vo);
-            be.remover(lstVeiculos.SelectedIndex);
+            vo = (VO.Veiculo)lstVeiculos.SelectedItem;
+            be.remover(vo.codigo);
             carregar();
         }
     }
